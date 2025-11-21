@@ -1,0 +1,98 @@
+{
+  "name": "game-dialog-script",
+  "displayName": "Game Dialog Script",
+  "description": "Language support for Game Dialog Script (.gds files)",
+  "version": "0.1.0",
+  "publisher": "bitpatch",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "game",
+    "dialog",
+    "script",
+    "gds"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitpatch/game-dialog-vscode.git"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "gds",
+        "aliases": [
+          "Game Dialog Script",
+          "gds"
+        ],
+        "extensions": [
+          ".gds"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/gds-file-icon.svg",
+          "dark": "./icons/gds-file-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "gds",
+        "scopeName": "source.gds",
+        "path": "./syntaxes/gds.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "gds",
+        "path": "./snippets/gds.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "gds.run",
+        "title": "Run Game Dialog Script",
+        "icon": "$(play)"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "when": "resourceLangId == gds",
+          "command": "gds.run",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceLangId == gds",
+          "command": "gds.run",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "gds.run",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "resourceLangId == gds"
+      }
+    ]
+  },
+  "main": "./extension.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bitpatch/game-dialog-vscode/issues"
+  },
+  "homepage": "https://github.com/bitpatch/game-dialog-vscode#readme"
+}
