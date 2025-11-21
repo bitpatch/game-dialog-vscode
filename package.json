@@ -2,9 +2,9 @@
   "name": "game-dialog-script",
   "displayName": "Game Dialog Script",
   "description": "Language support for Game Dialog Script (.gds files)",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "bitpatch",
-  "icon": "icon.png",
+  "icon": "gds-icon.png",
   "engines": {
     "vscode": "^1.80.0"
   },
