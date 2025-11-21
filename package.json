@@ -4,6 +4,7 @@
   "description": "Language support for Game Dialog Script (.gds files)",
   "version": "0.1.0",
   "publisher": "bitpatch",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.80.0"
   },
