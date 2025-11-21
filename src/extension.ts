@@ -1,14 +1,11 @@
-const vscode = require('vscode');
-const { exec } = require('child_process');
-const path = require('path');
+import * as vscode from 'vscode';
+import { exec } from 'child_process';
+import * as path from 'path';
 
-/**
- * @param {vscode.ExtensionContext} context
- */
-function activate(context) {
+export function activate(context: vscode.ExtensionContext) {
     console.log('Game Dialog Script extension is now active');
 
-    let disposable = vscode.commands.registerCommand('gds.run', function () {
+    const disposable = vscode.commands.registerCommand('gds.run', () => {
         const editor = vscode.window.activeTextEditor;
         
         if (!editor) {
@@ -63,9 +60,4 @@ function activate(context) {
     context.subscriptions.push(disposable);
 }
 
-function deactivate() {}
-
-module.exports = {
-    activate,
-    deactivate
-};
+export function deactivate() {}
