@@ -1,67 +1,88 @@
-# Game Dialog Script VS Code Extension
+# Official `Game Dialog Script` extension for VS Code
 
 [![GitHub release](https://img.shields.io/github/v/release/bitpatch/game-dialog-vscode)](https://github.com/bitpatch/game-dialog-vscode/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-VS Code extension for [Game Dialog Script](https://github.com/bitpatch/game-dialog-cli) with syntax highlighting, code snippets, and script execution.
+This is the VS Code extension project for full support of the [Game Dialog Script](https://github.com/bitpatch/game-dialog-lang) language. Scripts themselves should be written in `*.gds` files.
 
-## Features
+For comfortable work with the language you should install the CLI tool [`gdialog`](https://github.com/bitpatch/game-dialog-cli).
 
-- **Syntax Highlighting** - Full language support for `.gds` files
-- **Script Execution** - Run scripts directly from the editor with `Cmd+Shift+R` (macOS) or `Ctrl+Shift+R` (Windows/Linux)
-- **Code Snippets** - Quick insertion of common patterns (type `dialog`, `if`, `while`, etc.)
-- **Auto-completion** - Automatic bracket and quote pairing
+## Installation for macOS
 
-## Installation
+If you are a macOS user the easiest way is via `Homebrew`.
 
-### 1. Install gdialog
+If you don't have Homebrew yet, run:
 
 ```bash
-# Via Homebrew
-brew tap bitpatch/tools
-brew install gdialog
-
-# Via .NET Tool
-dotnet tool install --global gdialog
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### 2. Install Extension
+Then to install `gdialog` itself, run:
 
-Open VS Code → Extensions → Search "Game Dialog Script" → Install
+```bash
+brew tap bitpatch/tools
+brew install gdialog
+```
 
-## Usage
+## Installation on any system
 
-Open a `.gds` file and press `Cmd+Shift+R` (macOS) or `Ctrl+Shift+R` (Windows/Linux) to run. Results appear in the output panel.
+You can also install `gdialog` on any other system using `dotnet`. If you don't have dotnet yet, install it in any convenient way. Easiest is to start at the official site: [dotnet.microsoft.com](https://dotnet.microsoft.com/). Or ask one of the AI assistants — that's the time we live in :)
 
-## Syntax Example
+After that install the tool with:
 
-```gds
-# Variables
+```bash
+dotnet tool install -g gdialog
+```
+
+## Briefly about the language
+
+Game Dialog Script is a language intended, as the name obviously suggests, for writing non‑linear dialog in games. An important point: the language is fully written in `C# 9` and therefore can be used seamlessly with the Unity and Godot (Mono) game engines.
+
+A script can look at and change variable values directly in C# on the fly and return them. This lets you seamlessly connect the dialog script logic with the game state written in C#. That makes this language a great choice if you develop games in Unity or Godot.
+
+To test your dialogs you don't even need to run the game; just execute them in VS Code using the CLI tool `gdialog` and this extension.
+
+## Quick start on Unity
+
+Download the C# language library from the repository [game-dialog-lang](https://github.com/bitpatch/game-dialog-lang) or add it as a submodule.
+
+Create a simple script `script.gds` and you can immediately test it right inside VS Code without launching the game:
+
+```python
 playerName = "Arthur"
 reputation = 75
 
-# Dialog output
-<< "Welcome, " + playerName + "!"
+<< "Welcome, traveler!"
 
-# Conditionals
 if reputation > 50
-    << "Good to see you again!"
+    << "Good to see you again, " + playerName + "!"
 else
     << "I don't know you."
-
-# Loops
-count = 0
-while count < 3
-    << "Count: " + count
-    count = count + 1
 ```
 
-**Operators:** `+` `-` `*` `/` `=` `==` `!=` `<` `<=` `>` `>=` `<<` `>>` `not` `or` `and` `xor` `is`
+You will get output:
 
-## Development
+```
+Welcome, traveler!
+Good to see you again, Arthur!
+```
 
-Press `F5` to launch Extension Development Host for testing.
+After that create a simple MonoBehaviour script:
 
-## License
+```csharp
+using BitPatch.DialogLang;
 
-MIT © [bitpatch](https://github.com/bitpatch)
+var script = @"
+playerName = ""Arthur""
+<< ""Hello, "" + playerName + ""!""
+<< ""How are you doing?""
+";
+
+var dialog = new Dialog();
+foreach (var line in dialog.Execute(script))
+{
+    Console.WriteLine(line);
+}
+```
+
+Done! You can do something like this for Godot too. Good luck!
