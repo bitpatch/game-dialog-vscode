@@ -1,6 +1,6 @@
 # Game Dialog Script VS Code Extension
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/bitpatch/game-dialog-vscode)
+[![GitHub release](https://img.shields.io/github/v/release/bitpatch/game-dialog-vscode)](https://github.com/bitpatch/game-dialog-vscode/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 VS Code extension for [Game Dialog Script](https://github.com/bitpatch/game-dialog-cli) with syntax highlighting, code snippets, and script execution.
