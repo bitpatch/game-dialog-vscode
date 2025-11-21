@@ -1,0 +1,73 @@
+{
+  "Dialog Output": {
+    "prefix": "dialog",
+    "body": [
+      "<< \"$1\""
+    ],
+    "description": "Output a dialog line"
+  },
+  "Variable Assignment": {
+    "prefix": "var",
+    "body": [
+      "$1 = $2"
+    ],
+    "description": "Assign a value to a variable"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if $1",
+      "    $0"
+    ],
+    "description": "If statement"
+  },
+  "If-Else Statement": {
+    "prefix": "ifelse",
+    "body": [
+      "if $1",
+      "    $2",
+      "else",
+      "    $0"
+    ],
+    "description": "If-else statement"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "while $1",
+      "    $0"
+    ],
+    "description": "While loop"
+  },
+  "Dialog with Variable": {
+    "prefix": "dialogvar",
+    "body": [
+      "<< \"$1\" + $2 + \"$3\""
+    ],
+    "description": "Dialog line with variable concatenation"
+  },
+  "String Variable": {
+    "prefix": "varstr",
+    "body": [
+      "$1 = \"$2\""
+    ],
+    "description": "String variable assignment"
+  },
+  "Numeric Variable": {
+    "prefix": "varnum",
+    "body": [
+      "$1 = $2"
+    ],
+    "description": "Numeric variable assignment"
+  },
+  "Comparison Check": {
+    "prefix": "check",
+    "body": [
+      "if $1 $2 $3",
+      "    << \"$4\"",
+      "else",
+      "    << \"$5\""
+    ],
+    "description": "Comparison check with dialog output"
+  }
+}
