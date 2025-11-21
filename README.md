@@ -1,53 +1,67 @@
-# Game Dialog Script for VS Code
+# Game Dialog Script VS Code Extension
 
-Visual Studio Code extension for Game Dialog Script language with syntax highlighting and language support.
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/bitpatch/game-dialog-vscode)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+VS Code extension for [Game Dialog Script](https://github.com/bitpatch/game-dialog-cli) with syntax highlighting, code snippets, and script execution.
 
 ## Features
 
-- **Syntax Highlighting** - Full syntax highlighting for `.gds` files
-- **Auto-completion** - Intelligent code completion for keywords and operators
-- **Bracket Matching** - Automatic bracket and quote pairing
-- **Code Folding** - Fold code blocks based on indentation
-- **Comment Support** - Line comments with `#`
+- **Syntax Highlighting** - Full language support for `.gds` files
+- **Script Execution** - Run scripts directly from the editor with `Cmd+Shift+R` (macOS) or `Ctrl+Shift+R` (Windows/Linux)
+- **Code Snippets** - Quick insertion of common patterns (type `dialog`, `if`, `while`, etc.)
+- **Auto-completion** - Automatic bracket and quote pairing
 
 ## Installation
 
-### From VS Code Marketplace
+### 1. Install gdialog
 
-1. Open VS Code
-2. Press `Ctrl+P` / `Cmd+P`
-3. Type `ext install bitpatch.gds-language-support`
-4. Press Enter
+```bash
+# Via Homebrew
+brew tap bitpatch/tools
+brew install gdialog
 
-### From VSIX
+# Via .NET Tool
+dotnet tool install --global gdialog
+```
 
-1. Download the latest `.vsix` file from [Releases](https://github.com/bitpatch/game-dialog-vscode/releases)
-2. Open VS Code
-3. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
-4. Click `...` → `Install from VSIX...`
-5. Select the downloaded file
+### 2. Install Extension
 
-## Game Dialog Script Language
+Open VS Code → Extensions → Search "Game Dialog Script" → Install
 
-Game Dialog Script is a simple language for writing game dialogs with integrated logic.
+## Usage
 
-### Syntax Example
+Open a `.gds` file and press `Cmd+Shift+R` (macOS) or `Ctrl+Shift+R` (Windows/Linux) to run. Results appear in the output panel.
+
+## Syntax Example
 
 ```gds
-# Character introduction
-name = "Arthur"
-age = 25
+# Variables
+playerName = "Arthur"
+reputation = 75
 
-<< "Hello! My name is " + name
+# Dialog output
+<< "Welcome, " + playerName + "!"
 
-# Conditional dialog
-if age >= 18:
-    << "I am an adult"
-else:
-    << "I am a minor"
+# Conditionals
+if reputation > 50
+    << "Good to see you again!"
+else
+    << "I don't know you."
 
-# Loop example
-counter = 0
-while counter < 3:
-    << "Count: " + counter
-    counter = counter + 1
+# Loops
+count = 0
+while count < 3
+    << "Count: " + count
+    count = count + 1
+```
+
+**Operators:** `+` `-` `*` `/` `=` `==` `!=` `<` `<=` `>` `>=` `<<` `>>` `not` `or` `and` `xor` `is`
+
+## Development
+
+Press `F5` to launch Extension Development Host for testing.
+
+## License
+
+MIT © [bitpatch](https://github.com/bitpatch)

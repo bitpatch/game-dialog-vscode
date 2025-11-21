@@ -1,15 +1,15 @@
-# Пример файла на Game Dialog Script
+# Game Dialog Script Example
 
-# Переменные персонажа
+# Character variables
 playerName = "Arthur"
 reputation = 75
 level = 10
 gold = 500
 
-# Приветствие
+# Greeting
 << "Welcome to the tavern, traveler!"
 
-# Проверка репутации
+# Reputation check
 if reputation > 50
     << "Good to see you again, " + playerName + "!"
     << "Your reputation precedes you."
@@ -17,12 +17,12 @@ else
     << "I don't believe we've met before."
     << "Who might you be?"
 
-# Проверка уровня для специального диалога
+# Level check for special dialog
 if level >= 10
     << "You look like an experienced adventurer."
     << "Perhaps you'd be interested in a special quest?"
 
-# Диалог о золоте
+# Gold dialog
 << "You currently have " + gold + " gold coins."
 
 if gold < 100
@@ -30,7 +30,7 @@ if gold < 100
 else
     << "That's a decent purse you've got there!"
 
-# Цикл для вывода предметов
+# Loop for displaying items
 itemCount = 3
 currentItem = 1
 
