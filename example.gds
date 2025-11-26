@@ -42,3 +42,19 @@ while currentItem <= itemCount
 << "Thank you for visiting!"
 
 << "Sum: {itemCount + currentItem}"
+
+a = """This is a multi-line string.
+    It can span several lines.
+    Useful for long messages."""
+
+<<  """"
+    It's another multi-line string example.
+    With intentation preserved. {a}
+    """"
+
+<< a + """ Additional text appended.
+       multi-line strings are versatile! """
+
+b = a + """ More text in b.
+        This shows concatenation. """ + """ Even more text.
+        Multi-line strings can be combined. """
