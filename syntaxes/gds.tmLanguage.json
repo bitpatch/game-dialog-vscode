@@ -24,6 +24,22 @@
       "patterns": [
         {
           "name": "keyword.control.dialog.gds",
+          "begin": "^\\s*(<<|>>)\\s*\"",
+          "end": "\"",
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.dialog.gds" }
+          },
+          "contentName": "string.quoted.dialog.gds",
+          "patterns": [
+            { "include": "#string-interpolation" },
+            {
+              "name": "constant.character.escape.gds",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "keyword.control.dialog.gds",
           "match": "^\\s*(<<|>>)\\s*(.*)$",
           "captures": {
             "1": {
@@ -59,6 +75,7 @@
           "begin": "\"",
           "end": "\"",
           "patterns": [
+            { "include": "#string-interpolation" },
             {
               "name": "constant.character.escape.gds",
               "match": "\\\\."
@@ -74,6 +91,27 @@
               "name": "constant.character.escape.gds",
               "match": "\\\\."
             }
+          ]
+        }
+      ]
+    },
+    "string-interpolation": {
+      "patterns": [
+        {
+          "name": "meta.embedded.line.gds",
+          "begin": "\\{",
+          "end": "\\}",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.template-expression.begin.gds" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.template-expression.end.gds" }
+          },
+          "patterns": [
+            { "include": "#keywords" },
+            { "include": "#operators" },
+            { "include": "#numbers" },
+            { "include": "#variables" }
           ]
         }
       ]

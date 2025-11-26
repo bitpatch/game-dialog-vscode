@@ -40,3 +40,5 @@ while currentItem <= itemCount
     currentItem = currentItem + 1
 
 << "Thank you for visiting!"
+
+<< "Sum: {itemCount + currentItem}"
